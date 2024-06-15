@@ -5,7 +5,7 @@ import {OnlyMemberBase} from "bundle/textDAO/functions/onlyMember/OnlyMemberBase
 import {Storage, Schema} from "bundle/textDAO/storages/Storage.sol";
 
 contract Vote is OnlyMemberBase {
-    function voteHeaders(uint pid, uint[3] calldata headerIds) external onlyMember returns (bool) {
+    function voteHeaders(uint pid, uint[3] calldata headerIds) external returns (bool) {
         Schema.Proposal storage $p = Storage.$Proposals().proposals[pid];
 
         require($p.headers.length > 0, "No headers for this proposal.");
@@ -22,7 +22,7 @@ contract Vote is OnlyMemberBase {
         }
     }
 
-    function voteCmds(uint pid, uint[3] calldata cmdIds) external onlyMember returns (bool) {
+    function voteCmds(uint pid, uint[3] calldata cmdIds) external returns (bool) {
         Schema.Proposal storage $p = Storage.$Proposals().proposals[pid];
 
         require($p.cmds.length > 0, "No cmds for this proposal.");

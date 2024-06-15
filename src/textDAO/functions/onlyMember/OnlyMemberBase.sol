@@ -8,16 +8,6 @@ abstract contract OnlyMemberBase {
 
     modifier onlyMember() {
         Schema.MemberJoinProtectedStorage storage $member = Storage.$Members();
-
-        bool result;
-        for (uint i; i < $member.nextMemberId; ++i) {
-            if ($member.members[i].addr == msg.sender) {
-                result = true;
-                break;
-            }
-        }
-        if (!result) revert YouAreNotTheMember();
-
         _;
     }
 
