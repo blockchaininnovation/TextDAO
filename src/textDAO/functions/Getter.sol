@@ -45,7 +45,14 @@ contract Getter {
     }
 
     function getMember(uint id) external view returns (Schema.Member memory) {
-        return Storage.$Members().members[id];
+        for (uint i; i < Storage.$Members().nextMemberId; i++) {
+            if (Storage.$Members().members[i].id == id) {
+                return Storage.$Members().members[i];
+            }
+        }
+        return Schema.Member(0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, address(0), "");
+        
+        // return Storage.$Members().members[id];
     }
 
     function getNextMemberId() external view returns (uint) {
