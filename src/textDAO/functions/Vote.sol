@@ -30,17 +30,8 @@ contract Vote is OnlyMemberBase {
         console.log("$p.headers = %s", $p.headers.length);
 
         require($p.headers.length > 0, "No headers for this proposal.");
-
-        // if ($p.headers[0].id == headerIds[0]) {
-        //     $p.headers[headerIds[0]].currentScore += 3;
-        // } else if ($p.headers[1].id == headerIds[0]) {
-        //     $p.headers[headerIds[0]].currentScore += 3;
-        //     $p.headers[headerIds[1]].currentScore += 2;
-        // } else {
-            $p.headers[headerIds[0]].currentScore += 1;
-            $p.headers[headerIds[1]].currentScore += 1;
-            $p.headers[headerIds[2]].currentScore += 1;
-        // }
+        
+        $p.headers[headerIds[0]].currentScore += 1;
     }
 
     function voteCmds(uint pid, uint[3] calldata cmdIds) external returns (bool) {
