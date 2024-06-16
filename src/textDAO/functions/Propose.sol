@@ -18,37 +18,37 @@ contract Propose is OnlyMemberBase {
         Schema.VRFStorage storage $vrf = Storage.$VRF();
         Schema.MemberJoinProtectedStorage storage $member = Storage.$Members();
 
-        if ($.config.repsNum < $member.nextMemberId) {
-            /*
-                VRF Request to choose reps
-            */
+        // if ($.config.repsNum < $member.nextMemberId) {
+        //     /*
+        //         VRF Request to choose reps
+        //     */
 
-            require($vrf.subscriptionId > 0, "No Chainlink VRF subscription. Try SetConfigsProtected::createAndFundSubscription first.");
-            require($vrf.config.vrfCoordinator != address(0), "No Chainlink VRF vrfCoordinator. Try SetVRFProtected::setVRFConfig first.");
-            require($vrf.config.keyHash != 0, "No Chainlink VRF keyHash. Try SetConfigsProtected::setVRFConfig first.");
-            require($vrf.config.callbackGasLimit != 0, "No Chainlink VRF callbackGasLimit. Try SetConfigsProtected::setVRFConfig first.");
-            require($vrf.config.requestConfirmations != 0, "No Chainlink VRF requestConfirmations. Try SetConfigsProtected::setVRFConfig first.");
-            require($vrf.config.numWords != 0, "No Chainlink VRF numWords. Try SetConfigsProtected::setVRFConfig first.");
-            require($vrf.config.LINKTOKEN != address(0), "No Chainlink VRF LINKTOKEN. Try SetConfigs::setVRFConfig first.");
+        //     require($vrf.subscriptionId > 0, "No Chainlink VRF subscription. Try SetConfigsProtected::createAndFundSubscription first.");
+        //     require($vrf.config.vrfCoordinator != address(0), "No Chainlink VRF vrfCoordinator. Try SetVRFProtected::setVRFConfig first.");
+        //     require($vrf.config.keyHash != 0, "No Chainlink VRF keyHash. Try SetConfigsProtected::setVRFConfig first.");
+        //     require($vrf.config.callbackGasLimit != 0, "No Chainlink VRF callbackGasLimit. Try SetConfigsProtected::setVRFConfig first.");
+        //     require($vrf.config.requestConfirmations != 0, "No Chainlink VRF requestConfirmations. Try SetConfigsProtected::setVRFConfig first.");
+        //     require($vrf.config.numWords != 0, "No Chainlink VRF numWords. Try SetConfigsProtected::setVRFConfig first.");
+        //     require($vrf.config.LINKTOKEN != address(0), "No Chainlink VRF LINKTOKEN. Try SetConfigs::setVRFConfig first.");
 
 
-            // Assumes the subscription is funded sufficiently.
-            uint256 requestId = VRFCoordinatorV2Interface($vrf.config.vrfCoordinator).requestRandomWords(
-                $vrf.config.keyHash,
-                $vrf.subscriptionId,
-                $vrf.config.requestConfirmations,
-                $vrf.config.callbackGasLimit,
-                $vrf.config.numWords
-            );
+        //     // Assumes the subscription is funded sufficiently.
+        //     uint256 requestId = VRFCoordinatorV2Interface($vrf.config.vrfCoordinator).requestRandomWords(
+        //         $vrf.config.keyHash,
+        //         $vrf.subscriptionId,
+        //         $vrf.config.requestConfirmations,
+        //         $vrf.config.callbackGasLimit,
+        //         $vrf.config.numWords
+        //     );
 
-            $vrf.requests[$vrf.nextId].requestId = requestId;
-            $vrf.requests[$vrf.nextId].proposalId = proposalId;
-            $vrf.nextId++;
-        } else {
+        //     $vrf.requests[$vrf.nextId].requestId = requestId;
+        //     $vrf.requests[$vrf.nextId].proposalId = proposalId;
+        //     $vrf.nextId++;
+        // } else {
             for (uint i; i < $member.nextMemberId; ++i) {
                 $p.proposalMeta.reps.push($member.members[i].addr);
             }
-        }
+        // }
 
         if (_p.header.metadataURI.length > 0) {
             $p.headers.push(_p.header);

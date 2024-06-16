@@ -105,3 +105,41 @@
 
 # How to dev
 - `forge test`
+
+# ローカルで開発作業
+## ローカルブロックチェーン起動
+```
+anvil
+```
+これを実行すると開発用のローカルのブロックチェーンが起動する．
+サンプル用のアカウント10個が自動的に生成され，コンソールに出力される．
+このプロンプトはそのままにし，以下の作業は別のプロンプトを開き作業を行う．
+
+
+.env.sampleをコピーして.envファイルを生成．
+
+.envファイルを編集：
+```
+DEPLOYER_PRIV_KEY=
+```
+のところに，anvil起動時に出てきた秘密鍵の一つを貼り付け．
+
+```
+forge build
+```
+
+デプロイ．
+```
+forge script script/Deployment.s.sol --rpc-url http://127.0.0.1:8545 --broadcast --legacy
+```
+
+
+## Toubleshoot
+- Macで forge test時に以下のエラーがでる
+```
+dyld[73682]: Library not loaded: /usr/local/opt/libusb/lib/libusb-1.0.0.dylib
+```
+libusbをインストールしたら直った．
+```
+brew install libusb
+```
