@@ -14,7 +14,7 @@ contract TextDAOFacade {
     function voteCmds(uint _proposalId, uint[3] calldata _cmdIds) public {}
     function tally(uint _proposalId) public {}
     function execute(uint _proposalId) public {}
-    function memberJoin(uint _proposalId, Schema.Member[] calldata _candidates) public {}
+    function memberJoin(Schema.Member[] calldata _candidates) public {}
     function setProposalsConfig(Schema.ProposalsConfig calldata _config) public {}
     function overrideProposalsConfig(uint _proposalId, Schema.ProposalsConfig calldata _config) public {}
     function saveText(uint _proposalId, string calldata _text) public {}
