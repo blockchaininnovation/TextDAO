@@ -50,7 +50,7 @@ contract Getter {
                 return Storage.$Members().members[i];
             }
         }
-        return Schema.Member(0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, address(0), "");
+        return Schema.Member(0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, address(0), "", "");
         
         // return Storage.$Members().members[id];
     }

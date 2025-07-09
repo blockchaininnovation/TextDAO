@@ -16,7 +16,8 @@ contract MemberJoinProtected is ProtectionBase {
             }
             $.members[$.nextMemberId+i].id = candidates[i].id;
             $.members[$.nextMemberId+i].addr = candidates[i].addr;
-            $.members[$.nextMemberId+i].metadataURI = candidates[i].metadataURI;
+            $.members[$.nextMemberId+i].iconURI = candidates[i].iconURI;
+            $.members[$.nextMemberId+i].iconVerifiedSignature = candidates[i].iconVerifiedSignature;
         }
         $.nextMemberId = $.nextMemberId + candidates.length;
     }

@@ -19,6 +19,7 @@ import { SetConfigsProtected } from "bundle/textDAO/functions/protected/SetConfi
 import { ConfigOverrideProtected } from "bundle/textDAO/functions/protected/ConfigOverrideProtected.sol";
 import { SaveTextProtected } from "bundle/textDAO/functions/protected/SaveTextProtected.sol";
 import { TextDAOFacade } from "bundle/textDAO/interfaces/TextDAOFacade.sol";
+import { OnboardImage } from "bundle/textDAO/functions/OnboardImage.sol";
 
 contract Deployment is MCScript {
     function run() public startBroadcastWith("DEPLOYER_PRIV_KEY") {
@@ -40,6 +41,7 @@ contract Deployment is MCScript {
         mc.use("SetConfigsProtected", SetConfigsProtected.setProposalsConfig.selector, address(new SetConfigsProtected()));
         mc.use("ConfigOverrideProtected", ConfigOverrideProtected.overrideProposalsConfig.selector, address(new ConfigOverrideProtected()));
         mc.use("SaveTextProtected", SaveTextProtected.saveText.selector, address(new SaveTextProtected()));
+        mc.use("OnboardImage", OnboardImage.onboardImage.selector, address(new OnboardImage()));
 
         address getter = address(new Getter());
         mc.use("getProposal", Getter.getProposal.selector, getter);
