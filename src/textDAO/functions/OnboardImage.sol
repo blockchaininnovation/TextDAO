@@ -30,7 +30,6 @@ contract OnboardImage is OnlyMemberBase {
         require(isMember, "You are not a member.");
 
         Schema.Member storage $m = Storage.$Members().members[memberId];
-        require($m.addr == msg.sender, "You are not the member.");
         $m.iconURI = ipfsUrl;
         $m.iconVerifiedSignature = signature;
 
