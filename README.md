@@ -130,7 +130,7 @@ forge build
 
 デプロイ．
 ```
-forge script script/Deployment.s.sol --rpc-url http://127.0.0.1:8545 --broadcast --legacy
+forge script script/Deployment.s.sol --rpc-url http://127.0.0.1:8545 --broadcast
 ```
 
 

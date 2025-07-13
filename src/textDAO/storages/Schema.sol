@@ -67,7 +67,8 @@ library Schema {
     struct Member {
         uint id;
         address addr;
-        bytes32 metadataURI;
+        string iconURI;
+        bytes iconVerifiedSignature;
     }
 
     /// @custom:storage-location erc7201:textDAO.VRFStorage

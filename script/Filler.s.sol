@@ -64,7 +64,8 @@ contract Filler is Script {
         candidates[0] = Schema.Member({
             id: 123, // Example candidate ID
             addr: 0x1234567890123456789012345678901234567890, // Example candidate address
-            metadataURI: "exampleURI" // Example metadata URI
+            iconURI: "exampleIconURI", // Example icon URI
+            iconVerifiedSignature: new bytes(0) // Example empty signature
         });
 
         proposalArg.cmd.actions[0] = Schema.Action({

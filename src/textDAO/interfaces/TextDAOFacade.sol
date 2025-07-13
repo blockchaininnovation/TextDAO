@@ -18,6 +18,7 @@ contract TextDAOFacade {
     function setProposalsConfig(Schema.ProposalsConfig calldata _config) public {}
     function overrideProposalsConfig(uint _proposalId, Schema.ProposalsConfig calldata _config) public {}
     function saveText(uint _proposalId, string calldata _text) public {}
+    function onboardImage(string memory ipfsUrl, bytes memory signature) public {}
     // Getters
     function getProposal(uint id) external view returns (Getter.ProposalInfo memory) {}
     function getProposalHeaders(uint id) external view returns (Schema.Header[] memory) {}

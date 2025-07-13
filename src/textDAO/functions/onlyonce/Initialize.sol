@@ -18,7 +18,8 @@ contract Initialize {
         for (uint i = 0; i < initialMembers.length; i++) {
             $.members[currentMemberId].id = currentMemberId;
             $.members[currentMemberId].addr = initialMembers[i];
-            $.members[currentMemberId].metadataURI = "";
+            $.members[currentMemberId].iconURI = "";
+            $.members[currentMemberId].iconVerifiedSignature = "";
             currentMemberId++;
         }
         $.nextMemberId = currentMemberId;
